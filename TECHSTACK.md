@@ -42,6 +42,7 @@ This iterative loop generates all future data displayed on the dashboard.
 ## 4) 🗣️ Local Recommendation Generator
 
 This custom function replaces a Large Language Model (LLM).
+We are planning to integrate this with transformers soon
 
 * **Tokens:** A fixed list of **24 action phrases** (`PHRASES`) is defined (10 for surplus, 10 for deficit, 4 for timeframe).
 * **Seeded Selection:** The `local_generate()` function uses the **same deterministic seed** logic (based on magnitude and state) as the forecast loop. This means the **recommendation is predictable** for a given energy outcome.
@@ -57,6 +58,4 @@ This custom function replaces a Large Language Model (LLM).
 * **Map (Choropleth):** It reads the `india_state.geojson` file with **geopandas**, merges the forecast data, and uses **Plotly Express** (`px.choropleth`) to color the states based on their surplus/deficit flow.
 * **Trend Chart:** The time-series chart in the second tab uses **Plotly Graph Objects** (`go.Figure`) to plot **Actual** data (solid lines) alongside **Forecasted** data (dotted lines) for the selected state.
 
----
 
-I can generate the required dependency files now. Would you like the `requirements.txt` and a simple Dockerfile based on this v10 code?
