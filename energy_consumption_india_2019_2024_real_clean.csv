@@ -1,0 +1,109 @@
+Year,State,Region,Energy_Requirement_GWh,Energy_Available_GWh,Deficit_GWh,Deficit_Percent,Source,Page
+2019,Andhra Pradesh,Southern,0.3,-0.5,0.8,266.67,lgbr-2019.pdf,13
+2019,Arunachal Pradesh,North-Eastern,1.1,3.4,-2.3,3.9,lgbr-2019.pdf,18
+2019,Assam,North-Eastern,1.1,3.4,-2.3,10.5,lgbr-2019.pdf,13
+2019,Bihar,Eastern,0.4,-2.8,3.2,800.0,lgbr-2019.pdf,13
+2019,Chandigarh,Northern,1730.0,1805.0,-75.0,-4.34,lgbr-2019.pdf,8
+2019,Chhattisgarh,Western,32018.0,32494.0,-476.0,-1.49,lgbr-2019.pdf,8
+2019,Dadra & Nagar Haveli,Western,4.1,4.3,-0.2,-4.88,lgbr-2019.pdf,16
+2019,Daman & Diu,Western,2554.0,2833.0,-279.0,-10.92,lgbr-2019.pdf,8
+2019,Delhi,Northern,34010.0,41420.0,-7410.0,-21.79,lgbr-2019.pdf,8
+2019,Goa,Western,4073.0,4580.0,-507.0,-12.45,lgbr-2019.pdf,8
+2019,Gujarat,Western,125450.0,130497.0,-5047.0,-4.02,lgbr-2019.pdf,8
+2019,Haryana,Northern,54290.0,67530.0,-13240.0,-24.39,lgbr-2019.pdf,8
+2019,Himachal Pradesh,Northern,0.7,-2.4,3.1,17.8,lgbr-2019.pdf,13
+2019,Jammu & Kashmir,Northern,17.8,30.9,-13.1,-73.6,lgbr-2019.pdf,15
+2019,Jharkhand,Eastern,0.4,-2.8,3.2,800.0,lgbr-2019.pdf,13
+2019,Karnataka,Southern,78751.0,86464.0,-7713.0,-9.79,lgbr-2019.pdf,8
+2019,Kerala,Southern,26480.0,25013.0,1467.0,5.54,lgbr-2019.pdf,8
+2019,Madhya Pradesh,Western,1.3,0.1,1.2,2.2,lgbr-2019.pdf,16
+2019,Maharashtra,Western,153540.0,148236.0,5304.0,3.45,lgbr-2019.pdf,8
+2019,Manipur,North-Eastern,1.2,0.1,1.1,1.2,lgbr-2019.pdf,19
+2019,Meghalaya,North-Eastern,1.1,3.4,-2.3,-209.09,lgbr-2019.pdf,13
+2019,Odisha,Eastern,23.7,0.6,23.1,0.4,lgbr-2019.pdf,18
+2019,Puducherry,Southern,0.4,7.4,-7.0,3.2,lgbr-2019.pdf,17
+2019,Punjab,Northern,60680.0,74550.0,-13870.0,-22.86,lgbr-2019.pdf,8
+2019,Rajasthan,Northern,86260.0,103100.0,-16840.0,-19.52,lgbr-2019.pdf,8
+2019,Tamil Nadu,Southern,115497.0,115294.0,203.0,0.18,lgbr-2019.pdf,8
+2019,Telangana,Southern,85553.0,88567.0,-3014.0,-3.52,lgbr-2019.pdf,8
+2019,Tripura,North-Eastern,1.2,0.1,1.1,1.2,lgbr-2019.pdf,19
+2019,Uttar Pradesh,Northern,132600.0,156200.0,-23600.0,-17.8,lgbr-2019.pdf,8
+2019,Uttarakhand,Northern,14470.0,14220.0,250.0,1.73,lgbr-2019.pdf,8
+2020,Andhra Pradesh,Southern,0.1,0.2,-0.1,-100.0,lgbr-2020.pdf,15
+2020,Arunachal Pradesh,North-Eastern,1.0,1.5,-0.5,2.3,lgbr-2020.pdf,15
+2020,Assam,North-Eastern,5.3,2019.0,-2013.7,-20.0,lgbr-2020.pdf,15
+2020,Bihar,Eastern,0.2,6.7,-6.5,-3250.0,lgbr-2020.pdf,15
+2020,Chandigarh,Northern,4.3,24.4,-20.1,-20.0,lgbr-2020.pdf,19
+2020,Himachal Pradesh,Northern,0.7,1.3,-0.6,-85.71,lgbr-2020.pdf,15
+2020,Jharkhand,Eastern,0.3,0.8,-0.5,0.2,lgbr-2020.pdf,21
+2020,Karnataka,Southern,0.2,0.1,0.1,4.2,lgbr-2020.pdf,20
+2020,Ladakh,Northern,18.8,36.0,-17.2,-91.49,lgbr-2020.pdf,19
+2020,Lakshadweep,Southern,0.1,0.2,-0.1,-100.0,lgbr-2020.pdf,15
+2020,Maharashtra,Western,3.5,2019.0,-2015.5,-20.0,lgbr-2020.pdf,20
+2020,Manipur,North-Eastern,1.0,1.5,-0.5,2.3,lgbr-2020.pdf,15
+2020,Meghalaya,North-Eastern,1.5,2.3,-0.8,5.3,lgbr-2020.pdf,15
+2020,Odisha,Eastern,0.2,6.7,-6.5,-3250.0,lgbr-2020.pdf,15
+2020,Puducherry,Southern,0.2,0.1,0.1,4.2,lgbr-2020.pdf,20
+2020,Telangana,Southern,3.2,0.2,3.0,0.1,lgbr-2020.pdf,20
+2020,Uttar Pradesh,Northern,0.7,1.3,-0.6,18.8,lgbr-2020.pdf,15
+2020,Uttarakhand,Northern,1.7,2019.0,-2017.3,-20.0,lgbr-2020.pdf,19
+2021,Arunachal Pradesh,North-Eastern,1.0,1.3,-0.3,3.7,LGBR_2021_22.pdf,16
+2021,Assam,North-Eastern,3.7,2020.0,-2016.3,-21.0,LGBR_2021_22.pdf,16
+2021,Bihar,Eastern,0.2,6.7,-6.5,-12.0,LGBR_2021_22.pdf,15
+2021,Chandigarh,Northern,11.0,9.3,1.7,-21.0,LGBR_2021_22.pdf,19
+2021,Haryana,Northern,6.2,35.1,-28.9,-466.13,LGBR_2021_22.pdf,19
+2021,Kerala,Southern,0.1,5.2,-5.1,-5100.0,LGBR_2021_22.pdf,21
+2021,Ladakh,Northern,0.5,0.8,-0.3,12.9,LGBR_2021_22.pdf,15
+2021,Manipur,North-Eastern,1.0,1.3,-0.3,-30.0,LGBR_2021_22.pdf,16
+2021,Meghalaya,North-Eastern,1.3,3.7,-2.4,-184.62,LGBR_2021_22.pdf,16
+2021,Odisha,Eastern,0.2,6.7,-6.5,-3250.0,LGBR_2021_22.pdf,15
+2021,Tripura,North-Eastern,5.6,0.5,5.1,91.07,LGBR_2021_22.pdf,22
+2021,Uttar Pradesh,Northern,0.5,0.8,-0.3,12.9,LGBR_2021_22.pdf,15
+2021,Uttarakhand,Northern,0.5,0.8,-0.3,-60.0,LGBR_2021_22.pdf,15
+2021,West Bengal,Eastern,2020.0,-21.0,2041.0,-12.0,LGBR_2021_22.pdf,21
+2022,Andhra Pradesh,Southern,0.6,2.5,-1.9,-316.67,LGBR_2022_23.pdf,16
+2022,Arunachal Pradesh,North-Eastern,0.1,1.8,-1.7,-12.0,LGBR_2022_23.pdf,16
+2022,Assam,North-Eastern,15.6,26.9,-11.3,31.8,LGBR_2022_23.pdf,23
+2022,Bihar,Eastern,1.1,5.0,-3.9,-354.55,LGBR_2022_23.pdf,16
+2022,Chandigarh,Northern,24.9,1.7,23.2,-22.0,LGBR_2022_23.pdf,20
+2022,Chhattisgarh,Western,0.1,0.4,-0.3,-300.0,LGBR_2022_23.pdf,16
+2022,Haryana,Northern,0.3,0.9,-0.6,-200.0,LGBR_2022_23.pdf,16
+2022,Jharkhand,Eastern,1.5,5.0,-3.5,6.6,LGBR_2022_23.pdf,22
+2022,Kerala,Southern,1.1,0.1,1.0,7.1,LGBR_2022_23.pdf,21
+2022,Ladakh,Northern,10.6,7.3,3.3,31.13,LGBR_2022_23.pdf,20
+2022,Manipur,North-Eastern,0.2,14.7,-14.5,-7250.0,LGBR_2022_23.pdf,23
+2022,Meghalaya,North-Eastern,49.4,46.7,2.7,15.6,LGBR_2022_23.pdf,23
+2022,Nagaland,North-Eastern,0.1,1.8,-1.7,-12.0,LGBR_2022_23.pdf,16
+2022,Odisha,Eastern,1.1,5.0,-3.9,-354.55,LGBR_2022_23.pdf,16
+2022,Tamil Nadu,Southern,1.1,0.1,1.0,7.1,LGBR_2022_23.pdf,21
+2022,Tripura,North-Eastern,0.1,1.8,-1.7,-1700.0,LGBR_2022_23.pdf,16
+2022,Uttar Pradesh,Northern,1.7,22.2,-20.5,14.2,LGBR_2022_23.pdf,20
+2022,Uttarakhand,Northern,0.3,0.9,-0.6,10.6,LGBR_2022_23.pdf,16
+2023,Andhra Pradesh,Southern,0.0,0.6,-0.6,-12.0,LGBR_2023_24.pdf,21
+2023,Arunachal Pradesh,North-Eastern,0.1,4.5,-4.4,-4400.0,LGBR_2023_24.pdf,16
+2023,Bihar,Eastern,0.1,7.6,-7.5,-7500.0,LGBR_2023_24.pdf,16
+2023,Chandigarh,Northern,0.0,1.9,-1.9,2.5,LGBR_2023_24.pdf,20
+2023,Chhattisgarh,Western,0.1,0.4,-0.3,-300.0,LGBR_2023_24.pdf,16
+2023,Goa,Western,2022.0,-23.0,2045.0,101.14,LGBR_2023_24.pdf,21
+2023,Haryana,Northern,0.5,1.9,-1.4,-280.0,LGBR_2023_24.pdf,16
+2023,Himachal Pradesh,Northern,2022.0,-23.0,2045.0,101.14,LGBR_2023_24.pdf,20
+2023,Madhya Pradesh,Western,0.1,0.4,-0.3,-300.0,LGBR_2023_24.pdf,16
+2023,Nagaland,North-Eastern,0.1,4.5,-4.4,-4400.0,LGBR_2023_24.pdf,16
+2023,Tamil Nadu,Southern,0.1,0.6,-0.5,-500.0,LGBR_2023_24.pdf,16
+2023,Uttarakhand,Northern,0.5,1.9,-1.4,-280.0,LGBR_2023_24.pdf,16
+2024,Andhra Pradesh,Southern,0.1,1.1,-1.0,-1000.0,LGBR_2024_25.pdf,16
+2024,Arunachal Pradesh,North-Eastern,0.9,8.3,-7.4,-822.22,LGBR_2024_25.pdf,16
+2024,Assam,North-Eastern,0.9,8.3,-7.4,-822.22,LGBR_2024_25.pdf,16
+2024,Bihar,Eastern,0.1,4.0,-3.9,-3900.0,LGBR_2024_25.pdf,16
+2024,Chhattisgarh,Western,0.1,0.2,-0.1,-100.0,LGBR_2024_25.pdf,16
+2024,Haryana,Northern,0.3,1.5,-1.2,-400.0,LGBR_2024_25.pdf,16
+2024,Jharkhand,Eastern,1.5,4.0,-2.5,0.7,LGBR_2024_25.pdf,22
+2024,Karnataka,Southern,0.1,1.1,-1.0,-1000.0,LGBR_2024_25.pdf,16
+2024,Ladakh,Northern,0.3,1.5,-1.2,-400.0,LGBR_2024_25.pdf,16
+2024,Maharashtra,Western,0.1,0.2,-0.1,-100.0,LGBR_2024_25.pdf,16
+2024,Manipur,North-Eastern,0.9,1.6,-0.7,8.3,LGBR_2024_25.pdf,23
+2024,Meghalaya,North-Eastern,0.9,8.3,-7.4,-24.0,LGBR_2024_25.pdf,16
+2024,Nagaland,North-Eastern,0.1,3.8,-3.7,-24.0,LGBR_2024_25.pdf,23
+2024,Sikkim,Eastern,0.1,4.0,-3.9,-3900.0,LGBR_2024_25.pdf,16
+2024,Telangana,Southern,0.1,2023.0,-2022.9,-24.0,LGBR_2024_25.pdf,21
+2024,Uttarakhand,Northern,7.6,0.5,7.1,3.2,LGBR_2024_25.pdf,20
