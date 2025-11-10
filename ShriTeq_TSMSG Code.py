@@ -1,4 +1,4 @@
-# v10
+# v11 
 import os
 import math
 import time
@@ -35,29 +35,26 @@ from typing import Optional
 # Tokens
 # ----------------------------
 PHRASES = [
-    # surplus actions (0..9)
-    "store excess energy in grid-scale batteries",
-    "export surplus power via inter-state transmission",
-    "deploy demand-response programs to flatten peaks",
-    "increase utilization of storage and transmission assets",
-    "curtail non-critical generation temporarily where safe",
-    "offer short-term power to neighbouring regions",
-    "shift industrial loads to off-peak windows",
-    "activate pumped storage where available",
-    "agree short-term sale contracts for surplus energy",
-    "prioritise charging for critical infrastructure",
-    # deficit actions (10..19)
-    "activate reserve capacity and fast-ramping gas units",
-    "implement immediate demand-side management and conservation",
-    "secure short-term power purchase agreements (PPAs)",
-    "fast-track commissioning of solar and gas peakers",
-    "prioritise critical loads and stagger industrial demand",
-    "increase imports or inter-state transfers to cover shortfall",
-    "ramp up quick-start thermal units and peakers",
-    "defer non-essential maintenance to keep capacity online",
-    "issue temporary consumption advisories and demand response",
-    "coordinate with neighbouring regions for emergency imports",
-    # timeframe tokens (20..23)
+    "save extra power in large batteries",
+    "send extra power to other states",
+    "ask people to use less power at busy times",
+    "use storage and power lines more fully",
+    "temporarily reduce power from non-essential plants",
+    "sell short-term power to nearby areas",
+    "shift factory work to times when power use is low",
+    "use water storage (pumped hydro) where possible",
+    "make short-term deals to sell extra power",
+    "make sure critical places (hospitals) get power first for charging",
+    "start up backup power and fast gas plants",
+    "immediately manage demand and ask for power saving",
+    "quickly buy power from other places",
+    "quickly finish building solar and gas power plants",
+    "make sure important needs (hospitals) are met and spread out factory use",
+    "bring in more power from other states",
+    "quickly turn up fast-start power plants",
+    "delay simple repairs to keep all power plants running",
+    "tell people to save power and run short-term power saving plans",
+    "work with nearby states to get emergency power",
     "Immediate (0-6 months)",
     "Short-term (6-24 months)",
     "Medium-term (2-5 years)",
@@ -75,12 +72,12 @@ def compute_confidence(magnitude_gwh: float) -> int:
 
 def select_timeframe(mag: float) -> str:
     if mag < 500:
-        return PHRASES[21]  # Short-term
+        return PHRASES[21]  
     if mag < 3000:
-        return PHRASES[21]  # Short-term
+        return PHRASES[21] 
     if mag < 10000:
-        return PHRASES[22]  # Medium-term
-    return PHRASES[23]      # Long-term
+        return PHRASES[22]  
+    return PHRASES[23]       
 
 def local_generate(surplus_deficit_gwh: float, state: Optional[str], max_actions: int = 2, temperature: float = GEN_TEMPERATURE) -> str:
     if surplus_deficit_gwh is None or (isinstance(surplus_deficit_gwh, float) and math.isnan(surplus_deficit_gwh)):
@@ -89,7 +86,6 @@ def local_generate(surplus_deficit_gwh: float, state: Optional[str], max_actions
     mag = abs(float(surplus_deficit_gwh))
     sign = 1 if surplus_deficit_gwh > 0 else (-1 if surplus_deficit_gwh < 0 else 0)
 
-    # Deterministic-ish seed from magnitude and state
     state_hash = sum(ord(c) for c in (state or "")) % 997
     seed = int((mag * 13) + (0 if sign >= 0 else 7) + state_hash) & 0x7FFFFFFF
     rng = np.random.default_rng(seed)
@@ -98,7 +94,6 @@ def local_generate(surplus_deficit_gwh: float, state: Optional[str], max_actions
     deficit_pool = PHRASES[10:20]
     pool = surplus_pool if sign >= 0 else deficit_pool
 
-    # determine number of actions
     if mag < 500:
         n_actions = 1
     elif mag < 3000:
@@ -107,23 +102,22 @@ def local_generate(surplus_deficit_gwh: float, state: Optional[str], max_actions
         n_actions = 2
     n_actions = min(n_actions, max_actions, len(pool))
 
-    # produce randomized scores influenced by temperature
-    # lower temperature -> sharper scores => more deterministic picks
+
     temp = max(temperature, 0.01)
     scores = rng.random(len(pool)) ** (1.0 / temp)
     picked_indices = np.argsort(-scores)[:n_actions]
     selected = [pool[int(i)].capitalize() for i in picked_indices]
 
-    timeframe = select_timeframe(mag)
     conf = compute_confidence(mag)
 
     actions_text = "; ".join(selected)
-    text = f"{actions_text}. {timeframe}. Confidence: {conf}%."
-    if state and isinstance(state, str) and state.strip():
-        text = f"{text} ({state.strip()})"
+    text = f"{actions_text} ({conf}%)"
+    
     return text
 
 def generate_recommendation(surplus_deficit_gwh: float, state: Optional[str]) -> str:
+    # Use max_actions=1 for a more concise output, as requested.
+    # The system will still pick 2 actions for large surplus/deficit to ensure full advice.
     return local_generate(surplus_deficit_gwh, state, max_actions=2, temperature=GEN_TEMPERATURE)
 
 
@@ -154,7 +148,7 @@ st.markdown(
     .stApp { background-color: #0B0C10; color: #C5C6C7; font-family: 'Inter', sans-serif; }
     h1, h2, h3, h4 { color: #66FCF1; }
     .metric-card { background-color: #1F2833; border-radius: 12px; padding: 25px; text-align: center;
-                   box-shadow: 0 0 20px rgba(102, 252, 241, 0.12); margin-bottom: 20px; }
+                    box-shadow: 0 0 20px rgba(102, 252, 241, 0.12); margin-bottom: 20px; }
     .metric-card h3 { color: #45A29E; font-size: 1.0em; margin-bottom: 6px; }
     .metric-card h2 { color: #FFFFFF; font-size: 2.1em; margin-top: 0; }
     .dataframe th, .dataframe td { color: #C5C6C7 !important; }
@@ -163,6 +157,16 @@ st.markdown(
         -webkit-overflow-scrolling: touch;
         overflow: auto !important;
         touch-action: auto;
+    }
+    /* ENHANCED CSS FOR TEXT WRAPPING */
+    div[data-testid="stDataFrame"] .data-grid .cell-text {
+        white-space: normal !important; /* Force text wrapping */
+        word-wrap: break-word !important; /* Ensure long words break */
+        line-height: 1.4 !important; /* Improve readability of wrapped text */
+    }
+    div[data-testid="stDataFrame"] div[role="row"] {
+        height: auto !important; /* Allow row height to expand based on content */
+        min-height: 40px; /* Set a minimum height */
     }
 </style>
 """,
@@ -418,18 +422,15 @@ with st.spinner("Generating recommendations..."):
 # ----------------------------
 st.subheader(f"📋 State-Level Recommendations | {year_select}")
 
+# --- REVISED COLUMN SELECTION (Removed SNo, Status, Year) ---
 table_data = show_df[[
     "State",
     "Predicted_Surplus_Deficit (GWh)",
-    "Status",
-    "AI_Recommendation", # Use 'AI_Recommendation' from the generation step
-    "Year"
+    "AI_Recommendation"
 ]].copy()
 
-table_data.insert(0, "SNo.", range(1, 1 + len(table_data)))
 table_data.rename(columns={
     "Predicted_Surplus_Deficit (GWh)": "Surplus/Deficit (GWh)",
-    "Status": "Flow Status",
     "AI_Recommendation": "Recommendation" # Rename for display
 }, inplace=True)
 
@@ -438,20 +439,20 @@ def highlight_rows_new(row):
     color = "rgba(0,255,0,0.12)" if row["Surplus/Deficit (GWh)"] > 0 else "rgba(255,0,0,0.12)"
     return [f"background-color: {color}"] * len(row)
 
-# make table scrollable + resizable columns (FIXED: removed the invalid 'resizable' keyword)
 st.dataframe(
     table_data.style.format({"Surplus/Deficit (GWh)": "{:+,.0f}"}).apply(highlight_rows_new, axis=1),
     use_container_width=True,
     hide_index=True,
+    # --- REVISED COLUMN CONFIGURATION (Maximized Recommendation Width) ---
     column_config={
-        # Setting 'width' (small, medium, large) automatically enables resizing
-        # for these column types in recent Streamlit versions (1.25.0+)
-        "SNo.": st.column_config.NumberColumn("SNo.", width="small"),
-        "State": st.column_config.TextColumn("State", width="medium"),
-        "Surplus/Deficit (GWh)": st.column_config.NumberColumn("Surplus/Deficit (GWh)", width="medium"),
-        "Flow Status": st.column_config.TextColumn("Flow Status", width="small"),
-        "Recommendation": st.column_config.TextColumn("Recommendation", width="large"),
-        "Year": st.column_config.NumberColumn("Year", width="small"),
+        "State": st.column_config.TextColumn("State", width="medium"), # Retain fixed space for State
+        "Surplus/Deficit (GWh)": st.column_config.NumberColumn("Surplus/Deficit (GWh)", width="medium"), # Retain fixed space for numeric value
+        # ALL remaining available space is allocated to 'Recommendation'
+        "Recommendation": st.column_config.TextColumn(
+            "Recommendation", 
+            width="large", # Allocates the majority of the remaining space
+            help="Simple strategic actions based on the predicted energy flow."
+        ), 
     }
 )
 
@@ -466,12 +467,12 @@ with tab1:
         st.subheader("National Summary")
         if total_surplus_deficit > 0:
             st.success(f"✅ **Total Surplus: {total_surplus_deficit:,.0f} GWh**")
-            st.info("The national grid shows a net surplus. Strategic focus: Storing power and selling the extra.")
+            st.info("The country has more power than it needs. Key Action: Save or sell the extra power.")
         else:
             st.error(f"⚠️ **Total Deficit: {abs(total_surplus_deficit):,.0f} GWh**")
-            st.info("The national grid shows a net deficit. Strategic focus: Getting more power generation online quickly and saving energy.")
+            st.info("The country needs more power than it has. Key Action: Quickly get more power and save what's available.")
         st.markdown("---")
-        st.caption(f"States in Deficit: **{deficit_count}** | States in Surplus: **{surplus_count}**")
+        st.caption(f"States with Extra Power: **{surplus_count}** | States Needing Power: **{deficit_count}**")
         st.markdown("---")
 
     with map_col1:
@@ -479,7 +480,7 @@ with tab1:
         try:
             india = gpd.read_file(map_path)
         except Exception:
-            st.warning("GeoJSON map file not found. Skipping map display.")
+            st.warning("GeoJSON map file not found. Skipping map display. Please check the path.")
         else:
             india["NAME_1"] = india["NAME_1"].str.title()
             show_df["State"] = show_df["State"].str.title()
@@ -498,7 +499,7 @@ with tab1:
                 color_continuous_scale="RdYlGn",
                 range_color=[-max_value, max_value],
                 projection="mercator",
-                title=f"Energy Surplus/Deficit by State — {year_select}",
+                title=f"Energy Extra/Need by State — {year_select}",
             )
             fig_map.update_traces(marker_line_color=merged["Outline_Color"].tolist(), marker_line_width=1.5)
             fig_map.update_geos(fitbounds="locations", visible=False, bgcolor="#0B0C10", landcolor="#0B0C10", subunitcolor="#45A29E")
