@@ -11,25 +11,25 @@ Data used:
 3. Weather data -> imd_weather_india_2019_2024.csv
 
 Requirements for libraries:
-# --- Built-in Python Libraries ---
+# Built-in Python Libraries
 os
 math
 time
 typing
 
-# --- Core Libraries ---
+# Core Libraries
 pandas
 numpy
 
-# --- Visualization & Geospatial ---
+# Visualization & Geospatial
 plotly
 geopandas
 
-# --- Machine Learning ---
+# Machine Learning 
 scikit-learn
 xgboost
 lightgbm
 catboost
 
-# --- App Framework ---
+# App Framework
 streamlit
