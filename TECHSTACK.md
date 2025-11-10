@@ -1,6 +1,4 @@
-# ⚡ ECHO — Source Code (v10) Explained Practically
-
-This explanation breaks down the core functions and logic found in the `app.py` file.
+# ⚡ ECHO
 
 ---
 
