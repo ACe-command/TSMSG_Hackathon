@@ -31,7 +31,7 @@ except Exception:
 
 from typing import Optional
 
-# ----------------------------
+
 # Tokens
 # ----------------------------
 PHRASES = [
@@ -126,8 +126,8 @@ def local_generate(surplus_deficit_gwh: float, state: Optional[str], max_actions
 def generate_recommendation(surplus_deficit_gwh: float, state: Optional[str]) -> str:
     return local_generate(surplus_deficit_gwh, state, max_actions=2, temperature=GEN_TEMPERATURE)
 
-# ----------------------------
-# Helper: build_state_selectbox_options
+
+# Select Box
 # ----------------------------
 def build_state_selectbox_options(df, default_state_candidate: str = "Maharashtra"):
 
@@ -144,8 +144,8 @@ def build_state_selectbox_options(df, default_state_candidate: str = "Maharashtr
         default_index = 0
     return options, default_index
 
-# ----------------------------
-# Streamlit page styling + scroll tweaks
+
+# Streamlit page 
 # ----------------------------
 st.set_page_config(page_title="⚡ ECHO", layout="wide", initial_sidebar_state="collapsed")
 st.markdown(
@@ -173,8 +173,8 @@ st.markdown("<h1 style='text-align:center;'>⚡ ECHO : Energy Dashboard</h1>", u
 st.markdown("<h4 style='text-align:center; color:#C5C6C7;'>ECHO - Predict. Prevent. Power the Future.</h4>", unsafe_allow_html=True)
 st.markdown("<hr style='border:1.5px solid #45A29E; margin-top: 10px; margin-bottom: 18px;'>", unsafe_allow_html=True)
 
-# ----------------------------
-# Data paths (edit to your local files)
+
+# Data
 # ----------------------------
 gen_path = r"C:\Users\Aarav Chhabra\Downloads\energy_generation_india.csv"
 cons_path = r"C:\Users\Aarav Chhabra\Downloads\energy_consumption_india_2019_2024_real_clean.csv"
@@ -214,7 +214,7 @@ df = load_data_safe()
 if df is None:
     st.stop()
 
-# ----------------------------
+
 # Feature engineering & models
 # ----------------------------
 df['Solar_Generation'] = df.get('Solar_Generation', 0).fillna(0)
@@ -369,7 +369,7 @@ with st.spinner("Generating future forecasts for 2025-2050..."):
             })
 future_df = pd.DataFrame(future_data)
 
-# ----------------------------
+
 # UI: YEAR selection, state select
 # ----------------------------
 col1, col2, col3 = st.columns([1.5, 1, 1])
@@ -405,25 +405,24 @@ with col3:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+
+# Generate recommendations 
 # ----------------------------
-# Generate recommendations (local-only)
-# ----------------------------
-with st.spinner("Generating AI recommendations (local transformer-like generator)..."):
+with st.spinner("Generating recommendations..."):
     show_df["AI_Recommendation"] = show_df.apply(
         lambda r: generate_recommendation(r.get("Predicted_Surplus_Deficit (GWh)", 0), state=r.get("State", None)),
         axis=1
     )
 
-# ----------------------------
 # Forecast table
 # ----------------------------
-st.subheader(f"📋 State-Level AI Insights | {year_select}")
+st.subheader(f"📋 State-Level Recommendations | {year_select}")
 
 table_data = show_df[[
     "State",
     "Predicted_Surplus_Deficit (GWh)",
     "Status",
-    "AI_Recommendation",
+    "AI_Recommendation", # Use 'AI_Recommendation' from the generation step
     "Year"
 ]].copy()
 
@@ -431,23 +430,33 @@ table_data.insert(0, "SNo.", range(1, 1 + len(table_data)))
 table_data.rename(columns={
     "Predicted_Surplus_Deficit (GWh)": "Surplus/Deficit (GWh)",
     "Status": "Flow Status",
-    "AI_Recommendation": "AI Recommendation"
+    "AI_Recommendation": "Recommendation" # Rename for display
 }, inplace=True)
 
 def highlight_rows_new(row):
+    # Highlight rows based on surplus or deficit
     color = "rgba(0,255,0,0.12)" if row["Surplus/Deficit (GWh)"] > 0 else "rgba(255,0,0,0.12)"
     return [f"background-color: {color}"] * len(row)
 
+# make table scrollable + resizable columns (FIXED: removed the invalid 'resizable' keyword)
 st.dataframe(
     table_data.style.format({"Surplus/Deficit (GWh)": "{:+,.0f}"}).apply(highlight_rows_new, axis=1),
     use_container_width=True,
-    hide_index=True
+    hide_index=True,
+    column_config={
+        # Setting 'width' (small, medium, large) automatically enables resizing
+        # for these column types in recent Streamlit versions (1.25.0+)
+        "SNo.": st.column_config.NumberColumn("SNo.", width="small"),
+        "State": st.column_config.TextColumn("State", width="medium"),
+        "Surplus/Deficit (GWh)": st.column_config.NumberColumn("Surplus/Deficit (GWh)", width="medium"),
+        "Flow Status": st.column_config.TextColumn("Flow Status", width="small"),
+        "Recommendation": st.column_config.TextColumn("Recommendation", width="large"),
+        "Year": st.column_config.NumberColumn("Year", width="small"),
+    }
 )
 
-st.markdown("<hr style='border:1px solid #1F2833;'>", unsafe_allow_html=True)
 
-# ----------------------------
-# Tabs: Map & Trends
+# Map
 # ----------------------------
 tab1, tab2 = st.tabs(["🌎 Map Overview & National Summary", "📈 State Trend & Detailed Forecast"])
 
