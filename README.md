@@ -1,3 +1,5 @@
+**TECH STACK IS GIVEN AS "TECHSTACK"**
+
 How to run the app:
 1. Install all the libraries are installed
 2. Save the file as "ShriTeq_TSMSG Code.py"
@@ -7,3 +9,27 @@ Data used:
 1. Generation data -> energy_data_india.csv
 2. Renewable energy data -> energy_consumption_india_2019_2024_real_clean.csv
 3. Weather data -> imd_weather_india_2019_2024.csv
+
+Requirements for libraries:
+# --- Built-in Python Libraries ---
+os
+math
+time
+typing
+
+# --- Core Libraries ---
+pandas
+numpy
+
+# --- Visualization & Geospatial ---
+plotly
+geopandas
+
+# --- Machine Learning ---
+scikit-learn
+xgboost
+lightgbm
+catboost
+
+# --- App Framework ---
+streamlit
