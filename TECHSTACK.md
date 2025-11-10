@@ -4,16 +4,16 @@ This explanation breaks down the core functions and logic found in the `app.py` 
 
 ---
 
-## 1) 📦 Core Components and Setup
+## 1️⃣ Core Components and Setup
 
 * **Imports:** The code brings in essential libraries: **Streamlit** (for the web app), **pandas/numpy** (for data and math), **geopandas/plotly** (for maps and charts), and **scikit-learn** (for Machine Learning).
-* **Optional Boosters:** It tries to import **XGBoost, LightGBM, and CatBoost**. If these fast ML libraries aren't installed, the code is designed to **fall back** to using the standard **RandomForestRegressor** from scikit-learn instead, so the app still runs.
+* **Accuracy/Efficiency Boosters:** It tries to import **XGBoost, LightGBM, and CatBoost**. If these fast ML libraries aren't installed, the code is designed to **fall back** to using the standard **RandomForestRegressor** from scikit-learn instead, so the app still runs.
 * **Styling:** A large `<style>` block customizes the Streamlit page with a **dark, clean theme** (`#0B0C10` background, `#66FCF1` accents) and optimizes how the app scrolls.
 * **Data Loading (`@st.cache_data`):** The `load_data_safe()` function reads the CSV files. The `@st.cache_data` decorator ensures this **slow step only runs once**, even if the user clicks a widget and the rest of the script re-runs. It also includes **mock data** as a fallback if the specified CSV paths are broken.
 
 ---
 
-## 2) 🧠 Feature Engineering and Model Training
+## 2️⃣ Feature Engineering and Model Training
 
 This section prepares the data and builds the forecasting tools.
 
@@ -29,7 +29,7 @@ This section prepares the data and builds the forecasting tools.
 
 ---
 
-## 3) 🔮 Forecast Loop (2025–2050)
+## 3️⃣ Forecast Loop (2025–2050)
 
 This iterative loop generates all future data displayed on the dashboard.
 
@@ -39,7 +39,7 @@ This iterative loop generates all future data displayed on the dashboard.
 
 ---
 
-## 4) 🗣️ Local Recommendation Generator
+## 4️⃣ Local Recommendation Generator
 
 This custom function replaces a Large Language Model (LLM).
 We are planning to integrate this with transformers soon
@@ -51,7 +51,7 @@ We are planning to integrate this with transformers soon
 
 ---
 
-## 5) 🖼️ UI and Visualization
+## 5️⃣ UI and Visualization
 
 * **User Inputs:** Uses a **Streamlit slider** (`st.slider`) to select the year (2019–2050) and a **selectbox** (`st.selectbox`) to pick the state for the trend chart.
 * **Metrics:** It calculates and displays key metrics like **Validation Accuracy** and the **National Net Flow** (total surplus/deficit) using custom-styled **metric cards**.
