@@ -1,4 +1,4 @@
-# v11 
+# v11 - Basic Vocabulary
 import os
 import math
 import time
@@ -542,7 +542,7 @@ with tab2:
             fig_line.add_trace(go.Scatter(x=gen_forecast_series["Year"].astype(int), y=gen_forecast_series["Electricity_Generation"], mode="lines", name="Forecasted Generation", line=dict(color="#00AA00", width=2, dash="dot")))
             fig_line.add_trace(go.Scatter(x=dem_forecast_series["Year"].astype(int), y=dem_forecast_series["Energy_Requirement_GWh"], mode="lines", name="Forecasted Demand", line=dict(color="#AA4500", width=2, dash="dot")))
         fig_line.add_trace(go.Scatter(x=combined["Year"].astype(int), y=combined["Electricity_Generation"], fill="tozeroy", fillcolor="rgba(102, 252, 241, 0.12)", line=dict(width=0), name="Generation (area)", hoverinfo="skip"))
-        fig_line.update_layout(title=f"Energy Generation vs Demand Forecast — {state_sel} (Up to {year_select})", xaxis_title="Year", yaxis_title="Energy (GWh)", height=550, legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1), plot_bgcolor="#1F2833", paper_bgcolor="#0B0C10", font_color="#C5C6C7", title_font_color="#66FCF1")
+        fig_line.update_layout(title=f"Energy Generation vs Demand Forecast | {state_sel} (Up to {year_select})", xaxis_title="Year", yaxis_title="Energy (GWh)", height=550, legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1), plot_bgcolor="#1F2833", paper_bgcolor="#0B0C10", font_color="#C5C6C7", title_font_color="#66FCF1")
         if combined["Electricity_Generation"].max() == combined["Electricity_Generation"].min():
             yval = combined["Electricity_Generation"].max()
             fig_line.update_yaxes(range=[max(0, yval * 0.8 - 1), yval * 1.2 + 1])
